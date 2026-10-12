@@ -13,7 +13,7 @@
     "dev": "pnpm -r --parallel dev",
     "dev:libs": "pnpm -r --parallel --filter './packages/*' dev",
     "test": "vitest",
-    "test:run": "vitest run --project client --project server --project state --project tanstack-transport --project aisdk-transport --project y-durable-streams",
+    "test:run": "vitest run --project client --project server --project server-redis --project state --project tanstack-transport --project aisdk-transport --project y-durable-streams",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",

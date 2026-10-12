@@ -111,11 +111,12 @@ The protocol is:
 
 ### Servers & Tools
 
-| Package                                      | Description                                        |
-| -------------------------------------------- | -------------------------------------------------- |
-| [@durable-streams/server](./packages/server) | Node.js reference server (development/testing)     |
-| [@durable-streams/cli](./packages/cli)       | Command-line tool                                  |
-| [@durable-streams/state](./packages/state)   | State Protocol (insert/update/delete over streams) |
+| Package                                                  | Description                                        |
+| -------------------------------------------------------- | -------------------------------------------------- |
+| [@durable-streams/server](./packages/server)             | Node.js reference server (development/testing)     |
+| [@durable-streams/server-redis](./packages/server-redis) | Redis-backed Node.js server (production)           |
+| [@durable-streams/cli](./packages/cli)                   | Command-line tool                                  |
+| [@durable-streams/state](./packages/state)               | State Protocol (insert/update/delete over streams) |
 
 ### Testing & Benchmarks
 

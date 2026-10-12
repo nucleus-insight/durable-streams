@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@durable-streams/client": ["../client/src/index.ts"],
+      "@durable-streams/server": [
+        "../server-redis/test/support/reference-shim.ts"
+      ]
+    }
+  }
+}

@@ -34,7 +34,7 @@ export function useServerEndpoint(): ServerEndpointContextValue {
  * Get the server endpoint URL.
  *
  * Uses VITE_YJS_URL or VITE_SERVER_URL environment variable or falls back to the
- * current hostname with default Yjs server port (4438).
+ * local Yjs server (port 4438).
  */
 function getServerEndpoint(): string {
   if (import.meta.env.VITE_YJS_URL) {
@@ -45,12 +45,12 @@ function getServerEndpoint(): string {
     return import.meta.env.VITE_SERVER_URL
   }
 
-  // Same origin — Caddy proxies everything, add /v1/yjs prefix
-  const origin =
-    typeof window !== `undefined`
-      ? window.location.origin
-      : `https://localhost:4443`
-  return `${origin}/v1/yjs`
+  // Vite dev server: talk to the local Yjs server directly. Otherwise assume
+  // a reverse proxy exposes both servers on the page origin.
+  if (import.meta.env.DEV) {
+    return `http://localhost:4438/v1/yjs`
+  }
+  return `${window.location.origin}/v1/yjs`
 }
 
 function getDsEndpoint(): string {
@@ -58,12 +58,10 @@ function getDsEndpoint(): string {
     return import.meta.env.VITE_DS_URL
   }
 
-  // Same origin — Caddy proxies everything, add /v1/stream prefix
-  const origin =
-    typeof window !== `undefined`
-      ? window.location.origin
-      : `https://localhost:4443`
-  return `${origin}/v1/stream`
+  if (import.meta.env.DEV) {
+    return `http://localhost:4437/v1/stream`
+  }
+  return `${window.location.origin}/v1/stream`
 }
 
 function getYjsHeaders(): Record<string, string> {

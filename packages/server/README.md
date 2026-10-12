@@ -10,9 +10,7 @@ npm install @durable-streams/server
 
 ## Overview
 
-This package provides a reference implementation of the Durable Streams protocol for Node.js. It supports both in-memory and file-backed storage modes, making it suitable for development, testing, and prototyping. For production deployments, use the [Caddy plugin](../caddy-plugin/README.md) or [Electric Cloud](https://dashboard.electric-sql.cloud).
-
-For a standalone binary option, see the [Caddy-based server](https://github.com/durable-streams/durable-streams/releases).
+This package provides a reference implementation of the Durable Streams protocol for Node.js. It supports both in-memory and file-backed storage modes, making it suitable for development, testing, and prototyping. For production deployments, use [`@durable-streams/server-redis`](../server-redis/README.md), which keeps the same HTTP surface and stores streams in Redis.
 
 ## Quick Start
 

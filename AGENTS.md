@@ -20,6 +20,7 @@ Durable Streams is a protocol and set of implementations for persistent, resumab
 | -------------------------- | ---------- | --------------------------------------- |
 | `client`                   | TypeScript | Reference client library                |
 | `server`                   | TypeScript | Development server (not for production) |
+| `server-redis`             | TypeScript | Redis-backed production server          |
 | `client-conformance-tests` | TypeScript | Cross-language client test suite        |
 | `server-conformance-tests` | TypeScript | Server protocol compliance tests        |
 | `cli`                      | TypeScript | Command-line tools                      |
@@ -45,10 +46,10 @@ pnpm build
 Client (TypeScript)
         │
         ▼ HTTP
-┌───────────────────────┐
-│  server (Node.js)     │
-│  Memory or file store │
-└───────────────────────┘
+┌───────────────────────┐   ┌───────────────────────┐
+│  server (Node.js)     │   │  server-redis (Node)  │
+│  Memory or file store │   │  Redis streams/hashes │
+└───────────────────────┘   └───────────────────────┘
 ```
 
 - **Idempotent Producers**: Clients use `(producerId, epoch, seq)` headers for exactly-once writes
